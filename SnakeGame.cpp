@@ -92,6 +92,8 @@ void printFruit() {
 }
 
 void gameMain() {
+    snakeTailLen = 1;
+    int scoremain = 1;
     int x = canvasLength / 2;
     int y = canvasHeight / 2;
 
@@ -141,7 +143,7 @@ void gameMain() {
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // Brown
             cout << "\xB0";
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); // White
-            cout<< " Your Score was: " << snakeTailLen << endl;
+            cout << " Your Score was: " << scoremain << endl;
             Sleep(1000);
             _getch();
             playmode = false;
@@ -167,7 +169,7 @@ void gameMain() {
                     fruit.x = rand() % (canvasLength - 2) + 1;
                     fruit.y = rand() % (canvasHeight - 2) + 1;
                 } while (canvas[fruit.y][fruit.x] == '0' || canvas[fruit.y][fruit.x] == 'o');
-
+                scoremain++;
                 snakeTailLen++;
                 if (snakeTailLen > maxSnakeLength) {
                     snakeTailLen = maxSnakeLength;
@@ -197,7 +199,7 @@ void gameMain() {
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // Brown
             cout << "\xB0";
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7); // White
-            cout << " Your Score is: " << snakeTailLen << endl;
+            cout << " Your Score is: " << scoremain << endl;
             Sleep(50);
 
             // Reset frame elements after updating the fruit
@@ -216,7 +218,7 @@ void gameMain() {
 
 void artGameMenu() {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 5); // Purple
-    cout<< "" << endl;
+    cout << "" << endl;
     cout << "#   #                     ##                     #                        ##               #                  ##" << endl;
     cout << "#   #         #          #  #               #    #                       #  #              #                 #  #" << endl;
     cout << " # #    ##   ####        #  #  ###    ##   ####  ###    ##   # ##        #     ###    ###  #  #   ##         #      ### ## #    ##" << endl;
@@ -291,4 +293,3 @@ int main() {
     }
     return 0;
 }
-
